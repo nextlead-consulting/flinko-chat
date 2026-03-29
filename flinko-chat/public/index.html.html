@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flinko - Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <circle cx="30" cy="30" r="28" fill="white"/>
+                        <path d="M20 25 Q30 20 40 25 Q30 30 20 25" stroke="#2E86AB" stroke-width="3" fill="none"/>
+                        <path d="M20 30 Q30 25 40 30 Q30 35 20 30" stroke="#2E86AB" stroke-width="3" fill="none"/>
+                    </svg>
+                </div>
+                <h1>Flinko</h1>
+                <p>Private chat for friends & family</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Your Name</label>
+                    <input type="text" id="username" placeholder="Enter your name" required maxlength="20">
+                </div>
+                
+                <div class="form-group">
+                    <label>Choose Avatar</label>
+                    <div class="avatar-selector">
+                        <div class="avatar-option selected" data-avatar="😃">😃</div>
+                        <div class="avatar-option" data-avatar="😊">😊</div>
+                        <div class="avatar-option" data-avatar="🎉"></div>
+                        <div class="avatar-option" data-avatar="👋">👋</div>
+                        <div class="avatar-option" data-avatar="❤️">❤️</div>
+                        <div class="avatar-option" data-avatar="🌟"></div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary">Join Chat</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="chatScreen" class="chat-screen hidden">
+        <div class="chat-header">
+            <div class="header-logo">
+                <svg width="32" height="32" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="28" fill="white"/>
+                    <path d="M20 25 Q30 20 40 25 Q30 30 20 25" stroke="#2E86AB" stroke-width="3" fill="none"/>
+                    <path d="M20 30 Q30 25 40 30 Q30 35 20 30" stroke="#2E86AB" stroke-width="3" fill="none"/>
+                </svg>
+                <span>Flinko</span>
+            </div>
+            <div class="online-users">
+                <span id="onlineCount">0</span> online
+            </div>
+            <button id="logoutBtn" class="btn-logout">Logout</button>
+        </div>
+
+        <div id="messagesContainer" class="messages-container">
+            <div class="welcome-message">
+                <h2>Welcome to Flinko! 🌊</h2>
+                <p>Start chatting with your friends and family</p>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator"></div>
+
+        <form id="messageForm" class="message-form">
+            <input type="text" id="messageInput" placeholder="Type a message..." autocomplete="off">
+            <button type="submit" class="btn-send">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
